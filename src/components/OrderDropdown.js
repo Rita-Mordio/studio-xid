@@ -11,15 +11,15 @@ const OrderDropdown = ({ searchCriteria, setSearchCriteria }) => {
   };
 
   return (
-      <Dropdown
-          search
-          selection
-          placeholder="State"
-          className="order-dropdown"
-          options={OrderByOption}
-          defaultValue={OrderByOption[0].value}
-          onChange={handleDropdownChange}
-      />
+    <Dropdown
+      search
+      selection
+      placeholder="State"
+      className="order-dropdown"
+      options={OrderByOption}
+      defaultValue={OrderByOption[0].value}
+      onChange={handleDropdownChange}
+    />
   );
 };
 

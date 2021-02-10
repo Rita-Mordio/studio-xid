@@ -3,15 +3,15 @@
 /*############################*/
 
 .albums-container {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .albums-container .search-input {
-    width: 100%;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
     .albums-container .order-dropdown {
-        width: 100%;
+      width: 100%;
     }
 }

@@ -6,10 +6,10 @@ import Album from "./pages/Album";
 
 const App = () => {
   return (
-      <>
-        <Route path="/" component={Albums} exact={true} />
-        <Route path="/album" component={Album} />
-      </>
+    <>
+      <Route path="/" component={Albums} exact={true} />
+      <Route path="/album" component={Album} />
+    </>
   );
 };
 

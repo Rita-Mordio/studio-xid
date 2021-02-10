@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Container, Divider, Grid } from "semantic-ui-react";
+import {Card, Container, Divider, Loader, Dimmer, Grid, Transition } from "semantic-ui-react";
 import axios from "axios";
 import _ from "lodash";
 
 import SearchInput from "../components/SearchInput";
 import OrderDropdown from "../components/OrderDropdown";
+import AlbumCard from "../components/AlbumCard";
 
 const Albums = () => {
+  const [showLoader, setShowLoader] = useState(false)
   const [albumItems, setAlbumItems] = useState([])
   const [searchCriteria, setSearchCriteria] = useState({
     searchText: "",
@@ -18,8 +20,9 @@ const Albums = () => {
   }, [searchCriteria]);
 
   const getAlbums = () => {
+    setShowLoader(true);
     return axios.get(
-        "https://itunes.apple.com/us/rss/topalbums/limit=100/json"
+      "https://itunes.apple.com/us/rss/topalbums/limit=100/json"
     );
   };
 
@@ -28,9 +31,9 @@ const Albums = () => {
 
     const searchResult = _.filter(albumItems.data.feed.entry, (item) => {
       return (
-          item["im:name"].label
-              .toLowerCase()
-              .indexOf(searchCriteria.searchText) !== -1
+        item["im:name"].label
+          .toLowerCase()
+          .indexOf(searchCriteria.searchText) !== -1
       );
     });
 
@@ -53,27 +56,41 @@ const Albums = () => {
       default:
         setAlbumItems( searchResult )
     }
+
+    setShowLoader(false)
   };
 
+  const renderAlbums = () => {
+    return albumItems.map((albumItem) => <AlbumCard albumItem={albumItem} key={albumItem.id.attributes['im:id']} />);
+  }
+
   return (
-      <Container className="albums-container">
-        <Grid>
-          <Grid.Column computer={4} tablet={6} mobile={16}>
-            <OrderDropdown
-                searchCriteria={searchCriteria}
-                setSearchCriteria={setSearchCriteria}
-            />
-          </Grid.Column>
-          <Grid.Column computer={12} tablet={10} mobile={16}>
-            <SearchInput
-                searchCriteria={searchCriteria}
-                setSearchCriteria={setSearchCriteria}
-            />
-          </Grid.Column>
-        </Grid>
-        <Divider />
-        <div>영역3</div>
-      </Container>
+    <Container className="albums-container">
+      <Grid>
+        <Grid.Column computer={4} tablet={6} mobile={16}>
+          <OrderDropdown
+            searchCriteria={searchCriteria}
+            setSearchCriteria={setSearchCriteria}
+          />
+        </Grid.Column>
+        <Grid.Column computer={12} tablet={10} mobile={16}>
+          <SearchInput
+            searchCriteria={searchCriteria}
+            setSearchCriteria={setSearchCriteria}
+          />
+        </Grid.Column>
+      </Grid>
+      <Divider />
+      <Card.Group centered itemPerRow={3}>
+        {showLoader ? (
+          <Dimmer active inverted>
+            <Loader size="massive">Loading</Loader>
+          </Dimmer>
+        ) : (
+          renderAlbums()
+        )}
+      </Card.Group>
+    </Container>
   );
 };
 
