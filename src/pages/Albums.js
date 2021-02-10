@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Divider, Grid } from "semantic-ui-react";
+import axios from "axios";
 
 import OrderDropdown from "../components/OrderDropdown";
 
@@ -8,6 +9,16 @@ const Album = () => {
     searchText: "",
     orderType: "",
   });
+
+  useEffect(() => {
+    getAlbums()
+  }, []);
+
+  const getAlbums = () => {
+    return axios.get(
+      "https://itunes.apple.com/us/rss/topalbums/limit=100/json"
+    ).then(response => console.log(response.data.feed.entry));
+  };
 
   return (
     <Container className="albums-container">
