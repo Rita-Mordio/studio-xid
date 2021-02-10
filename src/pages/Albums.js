@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, Container, Divider, Grid } from "semantic-ui-react";
-import FadeIn from 'react-fade-in';
+import FadeIn from "react-fade-in";
 import axios from "axios";
 import _ from "lodash";
 
@@ -11,8 +11,8 @@ import DataLoader from "../components/DataLoader";
 import EmptyMessage from "../components/EmptyMessage";
 
 const Albums = () => {
-  const [showLoader, setShowLoader] = useState(false)
-  const [albumItems, setAlbumItems] = useState([])
+  const [showLoader, setShowLoader] = useState(false);
+  const [albumItems, setAlbumItems] = useState([]);
   const [searchCriteria, setSearchCriteria] = useState({
     searchText: "",
     orderType: "",
@@ -64,9 +64,11 @@ const Albums = () => {
   };
 
   const renderAlbums = () => {
-    if(albumItems.length === 0) return <EmptyMessage />
-    return albumItems.map((albumItem) => <AlbumCard albumItem={albumItem} key={albumItem.id.attributes['im:id']} />);
-  }
+    if (albumItems.length === 0) return <EmptyMessage />;
+    return albumItems.map((albumItem) => (
+      <AlbumCard albumItem={albumItem} key={albumItem.id.attributes["im:id"]} />
+    ));
+  };
 
   return (
     <Container className="albums-container">

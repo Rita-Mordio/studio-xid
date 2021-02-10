@@ -8,6 +8,16 @@
 
 .albums-container .search-input {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.albums-container .search-input .input {
+  width: calc(100% - 100px);
+}
+
+.albums-container .search-input .button {
+  width: 80px;
 }
 
 .albums-container .empty-message {
