@@ -20,6 +20,10 @@
   width: 80px;
 }
 
+.albums-container .card {
+  cursor: pointer;
+}
+
 .albums-container .empty-message {
   margin-top: 20%;
 }

@@ -8,6 +8,7 @@ const App = () => {
   return (
     <>
       <Route path="/" component={Albums} exact={true} />
+      <Route path="/albums" component={Albums} exact={true} />
       <Route path="/album" component={Album} />
     </>
   );

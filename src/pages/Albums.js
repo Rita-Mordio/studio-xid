@@ -24,9 +24,7 @@ const Albums = () => {
 
   const getAlbums = () => {
     setShowLoader(true);
-    return axios.get(
-      "https://itunes.apple.com/us/rss/topalbums/limit=100/json"
-    );
+    return axios.get("https://itunes.apple.com/us/rss/topalbums/limit=100/json");
   };
 
   const sortAlbumItem = async () => {
@@ -91,7 +89,7 @@ const Albums = () => {
         <DataLoader />
       ) : (
         <FadeIn>
-          <Card.Group centered itemPerRow={3}>
+          <Card.Group centered>
             {renderAlbums()}
           </Card.Group>
         </FadeIn>
