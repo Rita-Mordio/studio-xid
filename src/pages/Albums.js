@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {Card, Container, Divider, Loader, Dimmer, Grid, Transition } from "semantic-ui-react";
+import { Card, Container, Divider, Loader, Dimmer, Grid } from "semantic-ui-react";
+import FadeIn from 'react-fade-in';
 import axios from "axios";
 import _ from "lodash";
 
@@ -81,15 +82,17 @@ const Albums = () => {
         </Grid.Column>
       </Grid>
       <Divider />
-      <Card.Group centered itemPerRow={3}>
-        {showLoader ? (
-          <Dimmer active inverted>
-            <Loader size="massive">Loading</Loader>
-          </Dimmer>
-        ) : (
-          renderAlbums()
-        )}
-      </Card.Group>
+      {showLoader ? (
+        <Dimmer active inverted>
+          <Loader size="massive">Loading</Loader>
+        </Dimmer>
+      ) : (
+        <FadeIn>
+          <Card.Group centered itemPerRow={3}>
+            {renderAlbums()}
+          </Card.Group>
+        </FadeIn>
+      )}
     </Container>
   );
 };
