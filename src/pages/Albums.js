@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Container, Divider, Loader, Dimmer, Grid } from "semantic-ui-react";
+import { Card, Container, Divider, Grid } from "semantic-ui-react";
 import FadeIn from 'react-fade-in';
 import axios from "axios";
 import _ from "lodash";
@@ -7,6 +7,8 @@ import _ from "lodash";
 import SearchInput from "../components/SearchInput";
 import OrderDropdown from "../components/OrderDropdown";
 import AlbumCard from "../components/AlbumCard";
+import DataLoader from "../components/DataLoader";
+import EmptyMessage from "../components/EmptyMessage";
 
 const Albums = () => {
   const [showLoader, setShowLoader] = useState(false)
@@ -62,6 +64,7 @@ const Albums = () => {
   };
 
   const renderAlbums = () => {
+    if(albumItems.length === 0) return <EmptyMessage />
     return albumItems.map((albumItem) => <AlbumCard albumItem={albumItem} key={albumItem.id.attributes['im:id']} />);
   }
 
@@ -83,9 +86,7 @@ const Albums = () => {
       </Grid>
       <Divider />
       {showLoader ? (
-        <Dimmer active inverted>
-          <Loader size="massive">Loading</Loader>
-        </Dimmer>
+        <DataLoader />
       ) : (
         <FadeIn>
           <Card.Group centered itemPerRow={3}>

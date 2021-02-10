@@ -10,8 +10,12 @@
   width: 100%;
 }
 
+.albums-container .empty-message {
+  margin-top: 20%;
+}
+
 @media (max-width: 768px) {
-    .albums-container .order-dropdown {
-      width: 100%;
-    }
+  .albums-container .order-dropdown {
+    width: 100%;
+  }
 }
