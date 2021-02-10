@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Divider, Grid } from "semantic-ui-react";
 import axios from "axios";
 
+import SearchInput from "../components/SearchInput";
 import OrderDropdown from "../components/OrderDropdown";
 
 const Album = () => {
@@ -30,7 +31,10 @@ const Album = () => {
           />
         </Grid.Column>
         <Grid.Column computer={12} tablet={10} mobile={16}>
-          <div>영역2</div>
+          <SearchInput
+              searchCriteria={searchCriteria}
+              setSearchCriteria={setSearchCriteria}
+          />
         </Grid.Column>
       </Grid>
       <Divider />
