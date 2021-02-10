@@ -14,16 +14,14 @@ const SearchInput = ({ searchCriteria, setSearchCriteria }) => {
   };
 
   const onKeyPress = (event) => {
-    if (event.key === "Enter") {
-      onClick();
-    }
+    if (event.key === "Enter") onClick();
   };
 
   return (
     <div className="search-input">
       <Input
         icon="search"
-        placeholder="검색"
+        placeholder="검색어를 입력해주세요."
         className="input"
         onChange={handleInputChange}
         onKeyPress={onKeyPress}

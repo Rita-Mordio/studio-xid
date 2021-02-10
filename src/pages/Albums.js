@@ -10,7 +10,7 @@ import AlbumCard from "../components/AlbumCard";
 import DataLoader from "../components/DataLoader";
 import EmptyMessage from "../components/EmptyMessage";
 
-const Albums = () => {
+const Albums = ({ history }) => {
   const [showLoader, setShowLoader] = useState(false);
   const [albumItems, setAlbumItems] = useState([]);
   const [searchCriteria, setSearchCriteria] = useState({
@@ -64,7 +64,7 @@ const Albums = () => {
   const renderAlbums = () => {
     if (albumItems.length === 0) return <EmptyMessage />;
     return albumItems.map((albumItem) => (
-      <AlbumCard albumItem={albumItem} key={albumItem.id.attributes["im:id"]} />
+      <AlbumCard history={history} albumItem={albumItem} key={albumItem.id.attributes["im:id"]} />
     ));
   };
 

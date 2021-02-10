@@ -1,5 +1,5 @@
 /*############################*/
-/*#####       Album      #####*/
+/*#####       Albums     #####*/
 /*############################*/
 
 .albums-container {
@@ -32,4 +32,28 @@
   .albums-container .order-dropdown {
     width: 100%;
   }
+}
+
+/*############################*/
+/*#####       Album      #####*/
+/*############################*/
+
+.album-container {
+  margin-top: 20px;
+}
+
+.album-container table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.album-container table tbody tr td:nth-child(odd) {
+  min-width: 100px;
+}
+
+.album-container .detail-image {
+  margin: 0 auto;
+}
+
+.album-container .back-button {
+  margin-top: 20px;
 }
