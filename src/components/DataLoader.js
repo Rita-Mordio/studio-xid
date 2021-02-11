@@ -1,3 +1,5 @@
+// 페이지 로딩시 나타 날 Loader
+
 import React from "react";
 import { Dimmer, Loader } from "semantic-ui-react";
 

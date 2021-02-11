@@ -1,3 +1,5 @@
+// 검색 Input
+
 import React, { useState } from "react";
 import { Input, Button } from "semantic-ui-react";
 
