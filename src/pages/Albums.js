@@ -1,6 +1,6 @@
 // 앨범 리스트 페이지
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Card, Container, Divider, Grid } from "semantic-ui-react";
 import FadeIn from "react-fade-in";
 import axios from "axios";
@@ -11,14 +11,13 @@ import OrderDropdown from "../components/OrderDropdown";
 import AlbumCard from "../components/AlbumCard";
 import DataLoader from "../components/DataLoader";
 import EmptyMessage from "../components/EmptyMessage";
+import {SearchContext} from "../store/SearchStore";
 
 const Albums = ({ history }) => {
-  const [showLoader, setShowLoader] = useState(false);        //로더 표시 유무 관리
-  const [albumItems, setAlbumItems] = useState([]);           //API에서 가져온 데이터를 정럴 후 최종적으로 저장
-  const [searchCriteria, setSearchCriteria] = useState({      //검색 조건을 조전
-    searchText: "",
-    orderType: "",
-  });
+
+  const { searchCriteria, setSearchCriteria } = useContext(SearchContext);    //검색 조건을 저장
+  const [showLoader, setShowLoader] = useState(false);              //로더 표시 유무 관리
+  const [albumItems, setAlbumItems] = useState([]);                 //API에서 가져온 데이터를 정럴 후 최종적으로 저장
 
   useEffect(() => {
     sortAlbumItem();

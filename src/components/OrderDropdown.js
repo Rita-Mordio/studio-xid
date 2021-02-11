@@ -5,6 +5,7 @@ import { Dropdown } from "semantic-ui-react";
 import OrderByOption from "../orderBySetting";
 
 const OrderDropdown = ({ searchCriteria, setSearchCriteria }) => {
+
   const handleDropdownChange = (event, { value }) => {
     setSearchCriteria({
       ...searchCriteria,
@@ -19,7 +20,7 @@ const OrderDropdown = ({ searchCriteria, setSearchCriteria }) => {
       placeholder="State"
       className="order-dropdown"
       options={OrderByOption}
-      defaultValue={OrderByOption[0].value}
+      defaultValue={ searchCriteria.orderType === "" ? OrderByOption[0].value : searchCriteria.orderType}
       onChange={handleDropdownChange}
     />
   );

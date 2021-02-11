@@ -27,6 +27,7 @@ const SearchInput = ({ searchCriteria, setSearchCriteria }) => {
         className="input"
         onChange={handleInputChange}
         onKeyPress={onKeyPress}
+        defaultValue={searchCriteria.searchText}
       />
       <Button className="button" onClick={onClick}>
         검색
